@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-testing';
+
+  user = {
+    age: '27',
+    name:  'Yura',
+  }
+
+  tooltip = 'Я подсказка для ссылки'
+
+  inlineStyles = {
+    width: '50%',
+    background: 'green'
+  }
+
+  cssClass = 'blue'
+
+  someNumber = 70
 }
