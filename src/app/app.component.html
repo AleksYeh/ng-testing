@@ -1,20 +1,2 @@
-<h1>Заголовок страницы: {{ title}}</h1>
-
-<div>
-    <p>{{ user.age}}</p>
-    <p>{{user.name}}</p>
-</div>
-
-<a href="" [title]="tooltip">Ссылка куда-то </a>
-<br/>
-<a href="" bind-title="tooltip">Ссылка куда-то </a>
-
-<!-- стили -->
-
-<p class="red">Красный цвет</p>
-<p style="color: red">Красный цвет</p>
-<!-- ============================================= -->
- <p [class]="cssClass">Красный цвет</p>
- <p [style]="inlineStyles">Красный цвет</p>
-<!-- ============================================= -->
- <p [style.width.%]="someNumber">Красный цвет</p>
+<h1> {{ title | uppercase}}</h1>
+<h1> {{ title | lowercase}}</h1>
