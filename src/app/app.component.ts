@@ -6,21 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-testing';
+  ageOfUsers = [ {age: 20}, {age: 26}, {age: 22,} ]
 
-  user = {
-    age: '27',
-    name:  'Yura',
+  constructor() {
+    setTimeout(() => {
+      // this.ageOfUsers.push({age: 16})
+      this.ageOfUsers = [...this.ageOfUsers, {age: 16}]
+    }, 3000)
   }
-
-  tooltip = 'Я подсказка для ссылки'
-
-  inlineStyles = {
-    width: '50%',
-    background: 'green'
-  }
-
-  cssClass = 'blue'
-
-  someNumber = 70
 }
