@@ -2,4 +2,4 @@
 <!-- <button [style.color]="color" on-click="changeColor('yellow')">Кнопка</button> -->
 <p [style.color]="color" (click)="color = 'yellow'">Параграф</p>
 
-<input type="text" (input)="checkCurrentValue($event)" (keydown)="this.color = ''">
+<input type="text" (input)="checkCurrentValue($event)" (keydown.shift.shift.enter)="this.color = 'pink'">
