@@ -6,25 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  toggler: boolean = true;
-  str: string = '';
+  color: string = 'orange';
 
-  arr: any[] = ['text', 123, true, [1, 'abc'], NaN, Symbol];
-
-  obj: any = {
-    first: {
-      second: {
-        third: {
-          age: 11,
-          name: 'Mike',
-        },
-      },
-    },
+  cssProperties = {
+    color: 'orange',
+    background: 'green',
   };
-
-  someTrackByMethod(index: number, item: any) {
-    console.log(1);
-
-    return item;
-  }
 }
