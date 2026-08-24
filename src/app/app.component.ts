@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  toggler: boolean = true;
-  arr: any[] = ['text', 123, true, [1, 'abc'], { key: 'key' }, NaN, Symbol];
+  title: string = 'Заголовок';
+  name: string = 'Имя';
 
-  someTrackByMethod(index: number, item: any) {
-    console.log(1);
-
-    return item;
+  constructor() {
+    setTimeout(() => {
+      this.title = 'Другой заголовок';
+    }, 3000);
   }
 }

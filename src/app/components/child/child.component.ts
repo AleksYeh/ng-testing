@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -6,12 +6,39 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./child.component.scss'],
 })
 export class ChildComponent {
-  @Input('childColor') childColorProps!: string;
+  @Input() title!: string;
   @Input() name!: string;
 
-  @Output() nameChange = new EventEmitter<string>();
-
-  changeName() {
-    this.nameChange.emit('Имя, заданное в дочернем компоненте');
+  constructor() {
+    console.log(
+      '%c Компонент app-child успешно создан!',
+      'background: darkgreen'
+    );
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('%c ngOnchanges', 'color: aqua');
+    console.log('changes', changes);
+  }
+  // ngOnInit(): void {
+  //   console.log('%c ngOninit', 'color: deepskyblue');
+  // }
+  // ngDoChek(): void {
+  //   console.log('%c ngDoCheck', 'color: pink');
+  // }
+  // ngArfetContentInit(): void {
+  //   console.log('%c ngArfetContentInit', 'color: lightgreen');
+  // }
+  // ngArfetContentChecked(): void {
+  //   console.log('%c ngArfetContentChecked', 'color: green');
+  // }
+  // ngArfetViewInit(): void {
+  //   console.log('%c ngArfetViewInit', 'color: yellow');
+  //   setTimeout(() => console.log('title внутри  setTimeout'));
+  // }
+  // ngArfetViewChecked(): void {
+  //   console.log('%c ngArfetViewChecked', 'color: orange');
+  // }
+  // ngOnDestroy(): void {
+  //   console.log('%c ngOnDestroy', 'color: red');
+  // }
 }
