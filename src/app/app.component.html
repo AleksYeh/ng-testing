@@ -1,1 +1,5 @@
-<app-child [title]="title" [name]="name"></app-child>
+@if (toggler) {
+  <app-child [title]="title" [name]="name" [obj]="obj"> </app-child>
+}
+
+<button (click)="toggler = !toggler">Кнопка уничтожения</button>
