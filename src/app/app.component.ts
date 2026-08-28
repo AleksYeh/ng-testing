@@ -1,4 +1,11 @@
-import { Component, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  QueryList,
+  TemplateRef,
+  ViewChildren,
+} from '@angular/core';
+import { ChildComponent } from './components/child/child.component';
 
 @Component({
   selector: 'app-root',
@@ -7,46 +14,39 @@ import { Component, SimpleChanges } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Заголовок';
-  name: string = 'Имя';
-  toggler: boolean = true;
 
-  obj = { age: 12 };
+  // @ViewChild('selector') property: any;
+  // @ViewChild('paragrath') paragrath!: ElementRef<HTMLParagraphElement>;
+  // @ViewChild('paragrath', { read: ChildComponent })
+  // paragrath!: ElementRef<HTMLParagraphElement>;
+  // @ViewChild('paragrath', { read: ChildComponent, static: true })
+  // paragrath!: ElementRef<HTMLParagraphElement>;
+  // @ViewChild('template') template!: TemplateRef<HTMLParagraphElement>;
+  // @ViewChild(TemplateRef) template!: TemplateRef<HTMLParagraphElement>;
+  // @ViewChild(ChildComponent) component!: ChildComponent;
+  // @ViewChild(ChildComponent, { static: true }) component!: ChildComponent;
 
-  constructor() {
-    // setTimeout(() => {
-    //   this.title = 'Другой заголовок';
-    //   // this.obj.age = 10;
-    //   this.obj = { ...this.obj, age: 10 };
-    // }, 3000);
-    //   console.log(
-    //     '%c Компонент app-root успешно создан!',
-    //     'background: darkgreen'
-    //   );
-    // }
-    // ngOnChanges(changes: SimpleChanges): void {
-    //   console.log('%c родительский ngOnchanges', 'color: aqua');
-    //   // console.log('changes', changes);
-    // }
-    // ngOnInit(): void {
-    //   console.log('%c родительский ngOninit', 'color: deepskyblue');
-    // }
-    // ngDoCheck(): void {
-    //   console.log('%c родительский ngDocheck', 'color: pink');
-    // }
-    // ngAfterContentInit(): void {
-    //   console.log('%c родительский ngArfetContentInit', 'color: lightgreen');
-    // }
-    // ngAfterContentChecked(): void {
-    //   console.log('%c родительский ngArfetContentChecked', 'color: green');
-    // }
-    // ngAfterViewInit(): void {
-    //   console.log('%c родительский ngArfetViewInit', 'color: yellow');
-    //   setTimeout(() => console.log('title внутри  setTimeout'));
-    // }
-    // ngAfterViewChecked(): void {
-    //   console.log('%c родительский ngArfetViewChecked', 'color: orange');
-    // }
-    // ngOnDestroy(): void {
-    //   console.log('%c ngOnDestroy', 'color: red');
+  @ViewChildren('paragrath')
+  paragrath!: QueryList<ElementRef<HTMLParagraphElement>>;
+  @ViewChildren(TemplateRef) template!: QueryList<
+    TemplateRef<HTMLParagraphElement>
+  >;
+  @ViewChildren('paragrath, ChildComponent')
+  component!: QueryList<ChildComponent>;
+
+  // ngOnInit() {
+  //   console.log('component ngOnInit', this.component);
+  // }
+
+  ngAfterViewInit() {
+    // console.log('paragrath', this.paragrath);
+    // console.log('template', this.template);
+    // console.log('component', this.component);
+
+    // this.paragrath.nativeElement.textContent = 'qwerty';
+
+    // this.component.name = 'child name from parent';
+
+    this.component.forEach((item) => console.log('item', item));
   }
 }
