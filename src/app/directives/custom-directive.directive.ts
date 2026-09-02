@@ -10,6 +10,7 @@ import {
 
 @Directive({
   selector: '[appCustomDirective]',
+  exportAs: 'custom',
 })
 export class CustomDirectiveDirective {
   @Input('color') colorProps!: string;
@@ -42,13 +43,13 @@ export class CustomDirectiveDirective {
     this.getRandomColor();
   }
 
-  @HostListener('mouseenter') handleMouseenter() {
-    this.bgColor = 'orange';
-  }
+  // @HostListener('mouseenter') handleMouseenter() {
+  //   this.bgColor = 'orange';
+  // }
 
-  @HostListener('mouseleave') handleMousLeave() {
-    this.bgColor = 'transparent';
-  }
+  // @HostListener('mouseleave') handleMousLeave() {
+  //   this.bgColor = 'transparent';
+  // }
 
   ngOnChanges() {
     console.log('colorProps', this.colorProps);
@@ -63,5 +64,7 @@ export class CustomDirectiveDirective {
       (Math.random().toString(16) + '000000').substring(2, 8).toUpperCase();
 
     this.colorChange.emit(newColor);
+
+    return newColor;
   }
 }

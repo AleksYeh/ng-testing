@@ -3,6 +3,12 @@
   Параграф с директивой
 </p> -->
 
-<p [appCustomDirective]="colorProperty" (colorChange)="setColor($event)">
+<p
+  [appCustomDirective]="colorProperty"
+  #example="custom"
+  (colorChange)="setColor($event)"
+>
   Параграф с директивой
 </p>
+
+<app-child [style]="{ color: example.getRandomColor() }"></app-child>
