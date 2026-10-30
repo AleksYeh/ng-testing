@@ -4,21 +4,43 @@ import {
   Component,
 } from "@angular/core";
 import { ChildComponent } from "./components/child/child.component";
+import { DataService } from "./services/data.service";
+import { delay, Observable } from "rxjs";
+import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [ChildComponent],
+  imports: [ChildComponent, AsyncPipe],
   templateUrl: "./app.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  name: string = "Миша";
+  // private _dataService: DataService;
+  // constructor(dataService: DataService) {
+  //   this._dataService = dataService;
+  //   console.log(this._dataService.getData());
+  // }
 
-  constructor(private crd: ChangeDetectorRef) {
-    setTimeout(() => {
-      this.name = "Максим";
-      this.crd.markForCheck();
-    }, 3000);
+  users: any;
+  users$: Observable<any>;
+
+  constructor(
+    private dataService: DataService,
+    private cdr: ChangeDetectorRef,
+  ) {
+    console.log(this.dataService.getData());
+
+    this.dataService.getUsers().subscribe((users) => {
+      console.log(users);
+      this.users = users;
+      // this.cdr.detectChanges();
+    });
+
+    this.users$ = this.dataService.getUsers().pipe(delay(2000));
+  }
+
+  ngAfterViewInit(): void {
+    console.log("this.users", this.users);
   }
 }
